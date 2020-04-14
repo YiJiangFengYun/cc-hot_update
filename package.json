@@ -1,0 +1,29 @@
+{
+  "name": "cc-hot_update",
+  "version": "0.0.0",
+  "description": "A tool to process hot update of Cocos Creator,",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": " "
+  },
+  "keywords": [
+    "hot",
+    "update"
+  ],
+  "author": "YiJiangFengYun",
+  "license": "MIT",
+  "dependencies": {
+    "fs-extra": "^9.0.0"
+  },
+  "files": [
+    "hot_update.d.ts",
+    "inject_code.js",
+    "index.js",
+    "version_manifest_generator.js",
+    "walk_dir.js"
+  ]
+}
