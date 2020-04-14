@@ -1,3 +1,5 @@
+const path = require("path");
+const fsExtra = require("fs-extra");
 const versionManifestGen = require('./version_manifest_generator');
 
 function injectPrePosScript(dirBuildDest) {
