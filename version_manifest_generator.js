@@ -39,8 +39,8 @@ function generate(dirProject, dirBuildDest, options) {
     })
     .then(() => {
         manifest.packageUrl = remoteURL;
-        manifest.remoteManifestUrl = urljoin(remoteURL, 'res/project.manifest');
-        manifest.remoteVersionUrl = urljoin(remoteURL, 'res/version.manifest');
+        manifest.remoteManifestUrl = urlJoin(remoteURL, 'res/project.manifest');
+        manifest.remoteVersionUrl = urlJoin(remoteURL, 'res/version.manifest');
         manifest.version = version;
     })
     .then(() => {
