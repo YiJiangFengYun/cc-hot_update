@@ -17,7 +17,8 @@
   "author": "YiJiangFengYun",
   "license": "MIT",
   "dependencies": {
-    "fs-extra": "^9.0.0"
+    "fs-extra": "^9.0.0",
+    "url-join": "^4.0.1"
   },
   "files": [
     "hot_update.d.ts",

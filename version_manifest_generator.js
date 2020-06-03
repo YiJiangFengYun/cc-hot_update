@@ -1,4 +1,5 @@
 const path = require('path');
+const urlJoin = require("url-join")
 const crypto = require('crypto');
 const fsExtra = require('fs-extra');
 const walkDir = require('./walk_dir');
@@ -36,22 +37,10 @@ function generate(dirProject, dirBuildDest, options) {
             console.warn(`Version is empty! Set it to ${version}`);
         }
     })
-    // .then(() => {
-    //     return fsExtra.readJSON(path.join(dirProject, 'manifest.json'));
-    // })
-    // .then((manifest) => {
-    //     remoteURL = manifest.native.remoteUrl || 'http://localhost:8080';
-    // })
-    // .then(() => {
-    //     return fsExtra.readJSON(path.join(dirProject, 'package.json'));
-    // })
-    // .then((package) => {
-    //     version = package.version;
-    // })
     .then(() => {
         manifest.packageUrl = remoteURL;
-        manifest.remoteManifestUrl = path.posix.join(remoteURL, 'res/project.manifest');
-        manifest.remoteVersionUrl = path.posix.join(remoteURL, 'res/version.manifest');
+        manifest.remoteManifestUrl = urljoin(remoteURL, 'res/project.manifest');
+        manifest.remoteVersionUrl = urljoin(remoteURL, 'res/version.manifest');
         manifest.version = version;
     })
     .then(() => {
