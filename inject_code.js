@@ -121,7 +121,6 @@
             }
         }
 
-        // Init with empty manifest url for testing custom manifest
         const _am = new jsb.AssetsManager('./res/project.manifest', _storagePath, _versionCompareHandle);
 
         _am.setVerifyCallback(_verifyFileDownloaded);
