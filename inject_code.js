@@ -159,8 +159,10 @@
 
         function _retry() {
             if (_state !== STATE_ERROR) return;
-            if (_errorUpdateAsset)
+            if (_errorUpdateAsset) {
                 _am.downloadFailedAssets();
+                _state = STATE_UPDATING;
+            }
             else _do();
         }
 
