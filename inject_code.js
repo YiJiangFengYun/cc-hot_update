@@ -121,7 +121,7 @@
             }
         }
 
-        const _am = new jsb.AssetsManager('./res/project.manifest', _storagePath, _versionCompareHandle);
+        const _am = new jsb.AssetsManager('./project.manifest', _storagePath, _versionCompareHandle);
 
         _am.setVerifyCallback(_verifyFileDownloaded);
         _am.setEventCallback(_onEvents);

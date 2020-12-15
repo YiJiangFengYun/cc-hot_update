@@ -39,8 +39,8 @@ function generate(dirProject, dirBuildDest, options) {
     })
     .then(() => {
         manifest.packageUrl = remoteURL;
-        manifest.remoteManifestUrl = urlJoin(remoteURL, 'res/project.manifest');
-        manifest.remoteVersionUrl = urlJoin(remoteURL, 'res/version.manifest');
+        manifest.remoteManifestUrl = urlJoin(remoteURL, 'project.manifest');
+        manifest.remoteVersionUrl = urlJoin(remoteURL, 'version.manifest');
         manifest.version = version;
     })
     .then(() => {
@@ -100,12 +100,12 @@ function generate(dirProject, dirBuildDest, options) {
         return Promise.all(promises);
     })
     .then(() => {
-        return fsExtra.writeJSON(path.join(dirBuildDest, 'res/project.manifest'), manifest);
+        return fsExtra.writeJSON(path.join(dirBuildDest, 'project.manifest'), manifest);
     })
     .then(() => {
         delete manifest.assets;
         delete manifest.searchPaths;
-        return fsExtra.writeJSON(path.join(dirBuildDest, 'res/version.manifest'), manifest);
+        return fsExtra.writeJSON(path.join(dirBuildDest, 'version.manifest'), manifest);
     })
     
 }
