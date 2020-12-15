@@ -5,7 +5,7 @@ const fsExtra = require('fs-extra');
 const walkDir = require('./walk_dir');
 
 /**
- * Generate files project.manifest and version.manifest in the build dest res directory.
+ * Generate files project.manifest and version.manifest in the build dest directory.
  * @param { string } dirProject Project directory
  * @param { string } dirBuildDest Build directory
  * @param { object } [options] 选项
@@ -50,7 +50,7 @@ function generate(dirProject, dirBuildDest, options) {
         filePaths = filePaths.concat(paths);
     })
     .then(() => {
-        return walkDir(path.join(dirBuildDest, 'res'));
+        return walkDir(path.join(dirBuildDest, 'assets'));
     })
     .then((paths) => {
         filePaths = filePaths.concat(paths);
