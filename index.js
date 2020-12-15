@@ -31,8 +31,7 @@ function modifyBuildGradleCopyManifestFiles(dirDest) {
     const pathDirProjectAndroid = path.join(nativeProjectsDir, "proj.android-studio");
     const pathDirApp = path.join(pathDirProjectAndroid, "app");
     const pathBuildGradle = path.join(pathDirApp, "build.gradle");
-    promises.push(
-        Promise.resolve()
+    return Promise.resolve()
             .then(() => {
                 return fsExtra.readFile(pathBuildGradle, "utf8");
             })
@@ -53,7 +52,6 @@ function modifyBuildGradleCopyManifestFiles(dirDest) {
             .then((content) => {
                 return fsExtra.writeFile(pathBuildGradle, content);
             })
-    );
 }
 
 module.exports = {
