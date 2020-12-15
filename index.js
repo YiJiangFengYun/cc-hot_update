@@ -26,6 +26,36 @@ function injectPrePosScript(dirBuildDest) {
     });
 }
 
+function modifyBuildGradleCopyManifestFiles(dirDest) {
+    const nativeProjectsDir = path.join(dirDest, "frameworks/runtime-src");
+    const pathDirProjectAndroid = path.join(nativeProjectsDir, "proj.android-studio");
+    const pathDirApp = path.join(pathDirProjectAndroid, "app");
+    const pathBuildGradle = path.join(pathDirApp, "build.gradle");
+    promises.push(
+        Promise.resolve()
+            .then(() => {
+                return fsExtra.readFile(pathBuildGradle, "utf8");
+            })
+            .then((content) => {
+                const target = 'from "${sourceDir}/project.json"\n';
+                const index = content.indexOf(target);
+                const strVersionManifest = 'from "${sourceDir}/version.manifest"\n';
+                if (content.indexOf(strVersionManifest) < 0) content = add(strVersionManifest);
+                const strProjectManifest = 'from "${sourceDir}/project.manifest"\n';
+                if (content.indexOf(strProjectManifest) < 0) content = add(strProjectManifest);
+                
+                function add(str) {
+                    const start = index + target.length;
+                    return content.slice(0, start) + str + content.slice(start, content.length);
+                }
+                return content;
+            })
+            .then((content) => {
+                return fsExtra.writeFile(pathBuildGradle, content);
+            })
+    );
+}
+
 module.exports = {
     /**
      * Check build setting if is invalid when build is for native:
@@ -71,6 +101,9 @@ module.exports = {
         })
         .then(() => {
             return versionManifestGen(dirProject, dirBuildDest, options);
+        })
+        .then(() => {
+            return modifyBuildGradleCopyManifestFiles(dirBuildDest);
         });
     },
 };
