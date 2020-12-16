@@ -38,10 +38,17 @@ function generate(dirProject, dirBuildDest, options) {
         }
     })
     .then(() => {
+        const pathProjectManifest = 'project.manifest';
+        const pathVersionManifest = 'version.manifest';
+        const pathMainJs = "main.js";
         manifest.packageUrl = remoteURL;
-        manifest.remoteManifestUrl = urlJoin(remoteURL, 'project.manifest');
-        manifest.remoteVersionUrl = urlJoin(remoteURL, 'version.manifest');
+        manifest.remoteManifestUrl = urlJoin(remoteURL, pathProjectManifest);
+        manifest.remoteVersionUrl = urlJoin(remoteURL, pathVersionManifest);
         manifest.version = version;
+
+        filePaths.push(path.join(dirBuildDest, pathProjectManifest));
+        filePaths.push(path.join(dirBuildDest, pathVersionManifest));
+        filePaths.push(path.join(dirBuildDest, pathMainJs));
     })
     .then(() => {
         return walkDir(path.join(dirBuildDest, 'src'));
