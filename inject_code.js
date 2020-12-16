@@ -87,9 +87,11 @@
                     _state = STATE_UP_TO_DATE;
                     break;
                 case jsb.EventAssetsManager.NEW_VERSION_FOUND:
+                    _logInfo('Found new version.');
                     _doUpdate();
                     break;
                 case jsb.EventAssetsManager.UPDATE_PROGRESSION:
+                    _logInfo("Hot updating update progression changed.");
                     // if (_cbProgress) _cbProgress(
                     //     event.getDownloadedBytes(), 
                     //     event.getTotalBytes(), 
