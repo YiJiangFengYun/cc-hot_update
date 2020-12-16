@@ -1,6 +1,6 @@
 {
   "name": "cc-hot_update",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A tool to process hot update of Cocos Creator,",
   "main": "index.js",
   "scripts": {
