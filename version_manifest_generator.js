@@ -44,9 +44,6 @@ function generate(dirProject, dirBuildDest, options) {
         manifest.remoteManifestUrl = urlJoin(remoteURL, pathProjectManifest);
         manifest.remoteVersionUrl = urlJoin(remoteURL, pathVersionManifest);
         manifest.version = version;
-
-        filePaths.push(path.join(dirBuildDest, pathProjectManifest));
-        filePaths.push(path.join(dirBuildDest, pathVersionManifest));
     })
     .then(() => {
         return walkDir(path.join(dirBuildDest, 'src'));
